@@ -21,17 +21,23 @@ These instructions will get you a copy of the project up and running on your loc
 ### User interface
 
 **Start Screen**
-![enter image description here](https://raw.githubusercontent.com/mfathy/TalentVideo/master/art/start.png)
+
+![](https://raw.githubusercontent.com/mfathy/TalentVideo/master/art/start.png)
+
 Shows the user an option to start the first step of a video interview. At this screen the app selects a random question to show to the user, so he can answer it on the next screen.
 
 **When the app randomly selects an answered question, it will show the review screen instead.**
 
 **Question Screen**
+
 ![](https://raw.githubusercontent.com/mfathy/TalentVideo/master/art/question.png)
+
 Shows a random question to the user. The user has only 45 seconds to prepare an answer for the question, then the recording will start automatically. Also he has another 45 seconds to answer his question. Then the app will re-direct him to the review screen.
 
 **Review Screen**
+
 ![](https://raw.githubusercontent.com/mfathy/TalentVideo/master/art/review.png)
+
 Shows the video answer recorded by the user so he can review it. He has only 60 seconds to review his answer then the app will redirect him to the start screen.
 
 
