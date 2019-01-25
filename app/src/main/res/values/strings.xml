@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TalentVideo</string>
+    <string name="answer_question">Answer Question</string>
+    <string name="answer">Answer</string>
+    <string name="done">Done</string>
+    <string name="error_title">Sorry</string>
+    <string name="error_camera_device">Camera device error, App will close, OK?</string>
+    <string name="ok">Ok</string>
+    <string name="retry">Retry</string>
+</resources>
