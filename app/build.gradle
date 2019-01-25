@@ -1,0 +1,103 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs.kotlin'
+
+def globalConfiguration = rootProject.extensions.getByName("ext")
+def appDependencies = rootProject.ext.appDependencies
+def appTestDependencies = rootProject.ext.appTestDependencies
+
+android {
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+    defaultConfig {
+        applicationId "me.mfathy.talent.video"
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        testInstrumentationRunner "me.mfathy.talent.video.TestRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    implementation project(':data')
+
+    // Kotlin
+    implementation appDependencies.kotlin
+
+    // Android
+    implementation appDependencies.vectordrwable
+    implementation appDependencies.constraintlayout
+    implementation appDependencies.recyclerView
+    implementation appDependencies.material
+    implementation appDependencies.cardView
+    implementation appDependencies.appcompat
+
+    // dagger
+    implementation appDependencies.daggerAndroidSupport
+    implementation appDependencies.daggerAndroid
+    implementation appDependencies.dagger
+
+    implementation 'androidx.appcompat:appcompat:1.0.0-alpha1'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0-alpha1'
+    kapt appDependencies.daggerProcessor
+    kapt appDependencies.daggerCompiler
+
+    // RxJava || RxKotlin || RxAndroid
+    implementation appDependencies.rxKotlin
+    implementation appDependencies.rxAndroid
+
+    // ViewModel and LiveData
+    implementation appDependencies.lifeCycleExtension
+    implementation appDependencies.lifeCycleRuntime
+    kapt appDependencies.lifeCycleCompiler
+
+    // Glide
+    implementation appDependencies.glide
+    appDependencies.glideCompiler
+
+    implementation appDependencies.navigationRuntime
+    implementation appDependencies.navigationFragment
+
+    implementation 'androidx.core:core-ktx:1.0.1'
+    implementation 'com.karumi:dexter:5.0.0'
+    implementation 'com.google.android.exoplayer:exoplayer:2.7.0'
+
+    // testing / Junit
+    testImplementation appTestDependencies.kotlinJUnit
+    testImplementation appTestDependencies.junit
+
+    // mocking
+    testImplementation appTestDependencies.mockito
+    testImplementation appTestDependencies.robolectric
+    testImplementation appTestDependencies.assertj
+
+    // room and arch testing
+    testImplementation appTestDependencies.archCoreTesting
+
+    //  android testing
+    androidTestImplementation appTestDependencies.mockito
+    androidTestImplementation appTestDependencies.mockitoAndroidVersion
+    androidTestImplementation appTestDependencies.junit
+
+    debugImplementation appTestDependencies.espressoIdling
+    androidTestImplementation appTestDependencies.espressoIntents
+    androidTestImplementation appTestDependencies.espressoContrib
+    androidTestImplementation appTestDependencies.espressoCore
+    androidTestImplementation appTestDependencies.androidXJunit
+    androidTestImplementation appTestDependencies.runner
+    androidTestImplementation appTestDependencies.rules
+    androidTestImplementation appTestDependencies.testCore
+
+    kaptTest appDependencies.daggerCompiler
+    kaptAndroidTest appDependencies.daggerCompiler
+}
